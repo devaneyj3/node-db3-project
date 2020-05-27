@@ -4,7 +4,7 @@
 select ProductName, CategoryName
 from product as p join category as c on p.CategoryId = c.id
 
--- Display the order Id and shipper CompanyName for all orders placed before August 9 2012. Shows 429 records. Not Working
+-- Display the order Id and shipper CompanyName for all orders placed before August 9 2012. Shows 429 records.
 select id, CompanyName
 from [order] as o join shipper as s on o.shipvia = s.id
 where o.OrderDate < '2012-08-09'
@@ -22,3 +22,13 @@ select id as OrderID, CompanyName as Customer, LastName as EmployeeLastName
 from [Order] as o
     join Customer as c on c.id = o.CustomerId
     join Employee as e on e.id = o.EmployeeId
+
+--Stretch
+
+--Displays CategoryName and a new column called Count that shows how many products are in each category. Shows 8 records.
+
+--Not Working
+
+SELECT CategoryName, Count(Categories.CategoryID)
+FROM Categories JOIN Products
+    ON Categories.CategoryID = Products.CategoryID
