@@ -34,7 +34,8 @@ router.get('/:id/steps', (req, res) => {
   const { id } = req.params;
 
   Schemes.findSteps(id)
-  .then(steps => {
+    .then(steps => {
+    console.log(steps)
     if (steps.length) {
       res.json(steps);
     } else {
@@ -48,7 +49,7 @@ router.get('/:id/steps', (req, res) => {
 
 router.post('/', (req, res) => {
   const schemeData = req.body;
-
+  
   Schemes.add(schemeData)
   .then(scheme => {
     res.status(201).json(scheme);
@@ -85,9 +86,9 @@ router.put('/:id', (req, res) => {
   Schemes.findById(id)
   .then(scheme => {
     if (scheme) {
-      Schemes.update(changes, id)
-      .then(updatedScheme => {
-        res.json(updatedScheme);
+        Schemes.update(changes, id)
+        .then(updatedScheme => {
+          res.json(changes);
       });
     } else {
       res.status(404).json({ message: 'Could not find scheme with given id' });
