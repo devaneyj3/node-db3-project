@@ -12,8 +12,13 @@ function remove(id) {
     return db('schemes').where({id}).del()
 }
 
+function add(scheme) {
+    return db('schemes').insert( scheme)
+}
+
 module.exports = {
     find,
     findById,
-    remove
+    remove,
+    add
 }
