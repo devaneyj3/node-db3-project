@@ -20,10 +20,16 @@ function update(changes, id) {
     return db('schemes').where({ id }).update( changes)
 }
 
+function findSteps(id) {
+    return db('steps as st')
+        .join('schemes as s', 's.id', 'st.scheme_id').select('st.id', 's.scheme_name', 'st.step_number', 'st.instructions').where( 'st.scheme_id', id)
+}
+
 module.exports = {
     find,
     findById,
     remove,
     add,
-    update
+    update,
+    findSteps
 }
